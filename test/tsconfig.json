@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
-    "outDir": "../lib",
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "isolatedModules": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declaration": true,
     "noImplicitAny": true,
     "removeComments": false,
     "strictNullChecks": true,
@@ -22,8 +20,8 @@
       "es2017"
     ]
   },
-  "include": [
-    "./*.ts"
+  "files": [
+    "decorator.spec.ts"
   ],
   "exclude": [
     "node_modules",
