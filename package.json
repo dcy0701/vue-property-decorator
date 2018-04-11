@@ -1,6 +1,6 @@
 {
   "name": "@hfe/mta-vue-decorators",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "property decorators for Vue Component",
   "main": "lib/mta-vue-decorators.umd.js",
   "keywords": [

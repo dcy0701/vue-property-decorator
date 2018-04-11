@@ -58,23 +58,14 @@ export class MyComponent extends Vue {
 is equivalent to
 
 ```js
-const s = Symbol('baz')
-
 export const MyComponent = Vue.extend({
   name: 'MyComponent',
   props: {
-    propA: Number,
     propB: {
       type: String,
       default: 'default value'
     },
     propC: [String, Boolean],
-  },
-  provide () {
-    return {
-      foo: this.foo,
-      bar: this.baz
-    }
   },
   methods: {
     addToCount(n){
@@ -119,4 +110,4 @@ Also this library needs to have `emitDecoratorMetadata` set to `true` for this t
 
 ## TODO
 - [ ] `@Lifecycle`
-- [ ] others
+- [ ] Vuex的定义文件，比如@getter等
