@@ -1,6 +1,6 @@
 {
   "name": "@hfe/mta-vue-decorators",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "property decorators for Vue Component",
   "main": "lib/mta-vue-decorators.umd.js",
   "keywords": [
@@ -32,7 +32,6 @@
   },
   "typings": "./lib/vue-property-decorator.d.ts",
   "dependencies": {
-    "reflect-metadata": "^0.1.10",
     "vue-class-component": "^6.1.0"
   },
   "repository": {
