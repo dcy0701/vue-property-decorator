@@ -1,9 +1,8 @@
-/** vue-property-decorator verson 6.0.0 MIT LICENSE copyright 2017 kaorun343 */
+/** mta-vue-decorators verson 2.0.0 MIT LICENSE copyright 2018 onion */
 
 'use strict'
 import Vue, { PropOptions, WatchOptions } from 'vue'
 import Component, { createDecorator } from 'vue-class-component'
-import 'reflect-metadata'
 
 export type Constructor = {
   new(...args: any[]): any
@@ -18,10 +17,7 @@ export { Component, Vue }
  */
 export function Prop(options: (PropOptions | Constructor[] | Constructor) = {}): PropertyDecorator {
   return function (target: Vue, key: string) {
-    if (!Array.isArray(options) && typeof (options as PropOptions).type === 'undefined') {
-      (options as PropOptions).type = Reflect.getMetadata('design:type', target, key)
-    }
-    createDecorator((componentOptions, k) => {
+    createDecorator((componentOptions, k: string) => {
       (componentOptions.props || (componentOptions.props = {}) as any)[k] = options
     })(target, key)
   }

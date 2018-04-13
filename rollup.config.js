@@ -9,7 +9,7 @@ export default {
     'vue', 'vue-class-component', 'reflect-metadata'
   ],
   exports: 'named',
-  name: 'vue-property-decorator',
+  name: 'mta-vue-decorators',
   globals: {
     'vue': 'Vue',
     'vue-class-component': 'VueClassComponent'
