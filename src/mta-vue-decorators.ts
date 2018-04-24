@@ -2,13 +2,13 @@
 
 'use strict'
 import Vue, { PropOptions, WatchOptions } from 'vue'
-import Component, { createDecorator } from 'vue-class-component'
+import Component, { createDecorator, mixins } from 'vue-class-component'
 
 export type Constructor = {
   new(...args: any[]): any
 }
 
-export { Component, Vue }
+export { Component, mixins }
 
 /**
  * decorator of a prop
