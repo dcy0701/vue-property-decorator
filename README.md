@@ -17,11 +17,14 @@ yarn add @hfe/mta-vue-decorators
 There are 6 decorators:
 
 * `@Emit`
+* `@Inject`
+* `@Provide`
 * `@Prop`
 * `@On`
 * `@Once`
 * `@Watch`
 * `@Component` (**exported from** `vue-class-component`)
+* `mixins` (**exported from** `vue-class-component`)
 
 ```typescript
 import { Component, Emit, Prop, Vue, Watch } from '@hfe/mta-vue-decorators'
@@ -46,6 +49,12 @@ export class MyComponent extends Vue {
   @Prop([String, Boolean])
   propC: string | boolean
 
+  @Provide() foo = 'foo'
+  @Provide('bar') baz = 'bar'
+
+  @Inject() foo: string
+  @Inject('bar') bar: string
+
   @Watch('child')
   onChildChanged(val: string, oldVal: string) { }
 
@@ -60,6 +69,16 @@ is equivalent to
 ```js
 export const MyComponent = Vue.extend({
   name: 'MyComponent',
+  inject: {
+    foo: 'foo',
+    bar: 'bar',
+  },
+  provide () {
+    return {
+      foo: this.foo,
+      bar: this.baz
+    }
+  },
   props: {
     propB: {
       type: String,

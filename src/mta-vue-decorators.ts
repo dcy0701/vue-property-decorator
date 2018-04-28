@@ -11,6 +11,43 @@ export type Constructor = {
 export { Component, mixins }
 
 /**
+ * decorator of an inject
+ * @param key key
+ * @return PropertyDecorator
+ */
+export function Inject(key?: string | symbol): PropertyDecorator {
+  return createDecorator((componentOptions, k) => {
+    if (typeof componentOptions.inject === 'undefined') {
+      componentOptions.inject = {}
+    }
+    if (!Array.isArray(componentOptions.inject)) {
+      componentOptions.inject[k] = key || k
+    }
+  })
+}
+
+/**
+ * decorator of a provide
+ * @param key key
+ * @return PropertyDecorator | void
+ */
+export function Provide(key?: string | symbol): PropertyDecorator {
+  return createDecorator((componentOptions, k) => {
+    let provide: any = componentOptions.provide
+    if (typeof provide !== 'function' || !provide.managed) {
+      const original = componentOptions.provide
+      provide = componentOptions.provide = function (this: any) {
+        let rv = Object.create((typeof original === 'function' ? original.call(this) : original) || null)
+        for (let i in provide.managed) rv[provide.managed[i]] = this[i]
+        return rv
+      }
+      provide.managed = {}
+    }
+    provide.managed[k] = key || k
+  })
+}
+
+/**
  * decorator of a prop
  * @param  options the options for the prop
  * @return PropertyDecorator | void
